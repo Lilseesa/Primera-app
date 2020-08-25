@@ -2,11 +2,15 @@ package cr.ac.ucr.primerapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import cr.ac.ucr.primerapp.utils.AppPreferences;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -20,7 +24,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         etEmail = findViewById(R.id.et_email);
         etPassword = findViewById(R.id.et_password);
-
     }
 
     @Override
@@ -57,6 +60,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             //TODO: enviarlo al main activity
             //TODO: almacenar en el storage el usuario logueado
+
+            AppPreferences.getInstance(this).put(AppPreferences.Keys.IS_LOGGED_IN, true);
 
             Toast.makeText(this, R.string.logged_in, Toast.LENGTH_SHORT).show();
 
